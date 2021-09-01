@@ -5,25 +5,51 @@
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>Document</title>
+
+        <!-- CSS only -->
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KyZXEAg3QhqLMpG8r+8fhAXLRk2vvoC2f3B09zVXn8CA5QIVfZOJ3BCsw2P0p/We" crossorigin="anonymous">
+        <!-- JavaScript Bundle with Popper -->
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-U1DAWAznBHeqEIlVSCgzq+c9gqGAJn5c/t99JyeKa9xxaYpSvHU5awsuZVVFIhvj" crossorigin="anonymous"></script>
+        <link rel="stylesheet" href="./main.css"/>
+        <!--jquery-->
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
     </head>
     <body>
-        <h1>투두리스트</h1>
-        <h2>투두리스트</h2>
-        <h6>투두리스트</h6>
-        <div>영역</div>
-        <br/>
-        <hr/>
-        <div>영역2</div>
-        <p>긴~ 문장을 쓸 때</p>
-        <p>긴~ <span style="color: red">문장 </span>을 쓸 때</p>
-        <ul>
-            <li>1</li>
-            <li>2</li>
-        </ul>
+        <div class="container" id="container">
+            <h3 id="title">간단한 TODO 리스트</h3>
+            <div id="sub-container">
+                <ul class="list-group" id="list-group">
+                    <li class="list-group-item d-flex justify-content-between align-items-center" id="list-group-item">
+                      목록 하나!
+                      <span class="badge bg-primary rounded-pill" onclick="deleteTodo()">삭제</span>
+                    </li>  
+                  </ul>
+            </div>
+            <div class="input-group mb-3" id="input-group">
+                <input type="text" class="form-control" id="input-area">
+                <button class="btn btn-outline-secondary" type="button" id="button-area" onclick="addTodo()">추가</button>
+              </div>
+        </div>
+        <script>
+            
+            function addTodo(){
+                let todo = $("#input-area").val();
+                console.log(todo);
+                let id = Math.floor(Math.random() * 100000)
+                console.log(id)
+                let list_item = `<li class="list-group-item d-flex justify-content-between align-items-center list-${id}" id="list-group-item">
+                      ${todo}
+                      <span class="badge bg-primary rounded-pill" onclick="deleteTodo(${id})">삭제</span>
+                    </li>`
+            
+                $("#list-group").append(list_item)
+                $("#input-area").val('')
+            }
 
-        <input type="text" />
-        <input type="number"/>
-        <button>버튼</button>
-        <img src="https://img.kr.news.samsung.com/kr/wp-content/uploads/2021/07/%EA%B0%A4%EB%9F%AD%EC%8B%9C%ED%83%ADS7-FE_%EB%B8%94%EB%9E%99%EC%8B%A4%EB%B2%84%ED%95%91%ED%81%AC%EA%B7%B8%EB%A6%B01.jpg"/>
+            function deleteTodo(id){
+                $(".list-"+id).remove()
+            }
+       
+        </script>
     </body>
 </html>
