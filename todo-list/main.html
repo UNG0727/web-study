@@ -32,6 +32,23 @@
         </div>
         <script>
             
+            $(document).ready(function(){   //페이지가 열리자마자 실행 되는 부문
+                console.log("시작")
+
+                $.ajax({
+                    url:"",
+                    data:{},
+                    type:"GET",
+                    success:function(json){
+
+                    },
+                    error:function(err){
+                        
+                    }
+                })
+            })
+
+
             function addTodo(){
                 let todo = $("#input-area").val();
                 console.log(todo);
